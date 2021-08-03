@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "resolve-url": "^0.2.1"
+  },
+  "name": "tropicali",
+  "description": "Lessons: * 01 - Hyper + VS Code * 02 - Git, Github + Netlify * 03 - Sass",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/delimac/tropicali.git"
+  },
+  "author": "Chris De Lima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/delimac/tropicali/issues"
+  },
+  "homepage": "https://github.com/delimac/tropicali#readme"
+}
