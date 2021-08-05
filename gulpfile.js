@@ -3,6 +3,8 @@ const sass = require('gulp-sass')(require('sass'))
 var cleanCss = require("gulp-clean-css")
 var sourcemaps = require("gulp-sourcemaps")
 
+var browserSync = require("browser-sync").create()
+
 gulp.task("sass", function() {
   // place code for your default task here
   // we need to run "sass css/app.scss app.css --watch"
@@ -21,9 +23,15 @@ gulp.task("sass", function() {
     .pipe(sourcemaps.write())
     // where to save compiled css
     .pipe(gulp.dest("."))
+    .pipe(browserSync.stream())
 });
 
 gulp.task("watch", function () {
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    }
+  })
   gulp.watch("css/app.scss", ["sass"])
 })
 
