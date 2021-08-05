@@ -8,7 +8,7 @@ var browserSync = require("browser-sync").create()
 gulp.task("sass", function() {
   // place code for your default task here
   // we need to run "sass css/app.scss app.css --watch"
-  return gulp.src("css/app.scss")
+  return gulp.src("src/css/app.scss")
     // initialize sourcemaps before starting sass
     .pipe(sourcemaps.init())
     // pipe through sass compiler
@@ -22,17 +22,23 @@ gulp.task("sass", function() {
     // write sourcemaps
     .pipe(sourcemaps.write())
     // where to save compiled css
-    .pipe(gulp.dest("."))
+    .pipe(gulp.dest("dist"))
     .pipe(browserSync.stream())
 });
+
+gulp.task("html", function () {
+  return gulp.src("src/index.html")
+    .pipe(gulp.dest("dist"))
+})
 
 gulp.task("watch", function () {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "dist"
     }
   })
-  gulp.watch("css/app.scss", ["sass"])
+  gulp.watch("src/index.html", ["html"]).on("change", browserSync.reload)
+  gulp.watch("src/css/app.scss", ["sass"])
 })
 
-gulp.task('default', ["sass", "watch"])
+gulp.task('default', ["html", "sass", "watch"])
