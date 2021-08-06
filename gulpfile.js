@@ -1,9 +1,11 @@
 var gulp = require('gulp')
 const sass = require('gulp-sass')(require('sass'))
-var cleanCss = require("gulp-clean-css")
-var sourcemaps = require("gulp-sourcemaps")
+var cleanCss = require('gulp-clean-css')
+var sourcemaps = require('gulp-sourcemaps')
 
-var browserSync = require("browser-sync").create()
+var browserSync = require('browser-sync').create()
+
+var imagemin = require('gulp-imagemin')
 
 gulp.task("sass", function() {
   // place code for your default task here
@@ -38,6 +40,7 @@ gulp.task("fonts", function () {
 
 gulp.task("images", function () {
   return gulp.src("src/img/*")
+    .pipe(imagemin())
     .pipe(gulp.dest("dist/img"))
 })
 
